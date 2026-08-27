@@ -8,9 +8,9 @@ export const metadata = {
 };
 
 const ServiceDetail = ({ title, content }: { title: string, content: string }) => (
-  <div className="mb-10">
-    <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-red-main mb-3">{title}</h4>
-    <p className="text-navy-900/70 font-light leading-relaxed">{content}</p>
+  <div className="mb-10 pb-10 border-b border-navy-900/10 last:border-0 last:pb-0 last:mb-0">
+    <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-red-main mb-4">{title}</h4>
+    <p className="text-navy-900/75 font-light leading-relaxed text-lg">{content}</p>
   </div>
 );
 
@@ -42,7 +42,8 @@ export default function ServicesPage() {
                   People & Performance
                 </h2>
                 
-                <div className="bg-white p-8 border border-navy-900/5 mb-8">
+                <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-navy-900/5 mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-red-main/90"></div>
                   <h3 className="text-sm font-semibold tracking-widest uppercase mb-4 text-navy-900">Core Capabilities</h3>
                   <ul className="space-y-3 text-sm font-light text-navy-900/70">
                     <li className="flex items-start gap-2"><ArrowRight className="w-4 h-4 mt-0.5 text-red-main shrink-0" /> Professional counseling</li>
@@ -102,7 +103,8 @@ export default function ServicesPage() {
                   Management Consulting
                 </h2>
                 
-                <div className="bg-white p-8 border border-navy-900/5 mb-8">
+                <div className="bg-white p-8 md:p-10 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-navy-900/5 mb-8 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-red-main/90"></div>
                   <h3 className="text-sm font-semibold tracking-widest uppercase mb-4 text-navy-900">Core Capabilities</h3>
                   <ul className="space-y-3 text-sm font-light text-navy-900/70">
                     <li className="flex items-start gap-2"><ArrowRight className="w-4 h-4 mt-0.5 text-red-main shrink-0" /> Strategic planning</li>
@@ -146,20 +148,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="bg-navy-900 py-32 text-center border-t border-white/10">
-        <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-          <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-            Not sure where to start?
-          </h2>
-          <p className="text-white/60 mb-12 font-light">
-            Every major transition begins with a single conversation.
-          </p>
-          <Link href="/contact">
-            <Button size="lg" withArrow>Start Your Pivot</Button>
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

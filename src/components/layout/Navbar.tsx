@@ -30,8 +30,9 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  const isHome = pathname === "/";
-  const isLightText = isScrolled || !isHome;
+  const darkHeroPages = ["/about", "/services", "/contact"];
+  const hasDarkHero = darkHeroPages.includes(pathname);
+  const isLightText = isScrolled || (!isScrolled && hasDarkHero);
 
   return (
     <>

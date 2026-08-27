@@ -103,7 +103,7 @@ export default function WhoWeServePage() {
               "Business and management advisory",
               "Performance psychology frameworks"
             ]}
-            imageSrc="https://images.unsplash.com/photo-1526566762798-8fac9c07aa22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+            imageSrc="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
           />
 
           <Pathway 
@@ -148,20 +148,6 @@ export default function WhoWeServePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="bg-navy-900 py-32 text-center border-t border-white/10">
-        <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-          <h2 className="font-serif text-4xl md:text-5xl text-white mb-6">
-            Don&apos;t see an exact match?
-          </h2>
-          <p className="text-white/60 mb-12 font-light">
-            Human potential doesn&apos;t always fit neatly into a box. Reach out, and let&apos;s talk about your specific situation.
-          </p>
-          <Link href="/contact">
-            <Button size="lg" withArrow>Contact Us</Button>
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

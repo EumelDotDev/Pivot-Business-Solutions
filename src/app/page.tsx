@@ -1,66 +1,112 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
+  }
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+};
 
 export default function Home() {
+  const [activeMethodology, setActiveMethodology] = useState(0);
+
+  const methodologySteps = [
+    {
+      num: "01",
+      title: "Understand.",
+      desc: "We begin by diagnosing the reality of where you or your organization stands today, stripping away assumptions.",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      num: "02",
+      title: "Reframe.",
+      desc: "We shift the perspective, identifying the underlying challenges and illuminating the strategic opportunities.",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+    },
+    {
+      num: "03",
+      title: "Move.",
+      desc: "We implement a clear, decisive action plan to transition from the current state to the desired possibility.",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+    }
+  ];
+
   return (
     <>
       {/* 01: HERO */}
-      <section className="relative pt-40 pb-20 bg-ivory text-navy-900">
-        <div className="container mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
+      <section className="relative pt-40 pb-20 bg-ivory text-navy-900 overflow-hidden">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          animate="show"
+          className="container mx-auto px-6 lg:px-12 flex flex-col items-center text-center"
+        >
           
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-navy-900/10 mb-8 bg-white/50 backdrop-blur-sm shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-main"></span>
-            <span className="text-[0.65rem] font-bold tracking-widest uppercase text-navy-900/70">Counseling & Consulting</span>
-          </div>
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-4 mb-10">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-navy-900/60">Strategy. Performance. Possibility.</span>
+            <span className="w-8 h-px bg-red-main"></span>
+          </motion.div>
           
-          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight text-navy-900 mb-6 max-w-5xl">
+          <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-tight text-navy-900 mb-8 max-w-5xl">
             Pivot to <br className="hidden md:block" />
-            <span className="italic">Possibility.</span>
-          </h1>
+            <span className="italic text-red-main">Possibility.</span>
+          </motion.h1>
           
-          <p className="text-lg md:text-xl text-navy-900/60 max-w-2xl mb-12 font-light leading-relaxed">
-            Professional counseling and strategic management advisory for athletes, young professionals, and businesses navigating growth and transition.
-          </p>
+          <motion.p variants={fadeUp} className="text-lg md:text-xl text-navy-900/70 max-w-2xl mx-auto mb-14 font-light leading-relaxed">
+            Helping people, athletes, and organizations navigate pivotal moments with clarity, strategy, and confidence.
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-4 mb-20 z-10">
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-6 mb-24 z-10">
             <Link href="/contact">
-              <Button size="lg" variant="secondary" withArrow>
-                Book a Strategy Session
+              <Button size="lg" variant="primary" withArrow>
+                Start Your Pivot
               </Button>
             </Link>
             <Link href="/about">
               <Button size="lg" variant="outline-dark" withArrow>
-                Learn More
+                Explore How We Help
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="relative w-full max-w-6xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl">
+          <motion.div variants={fadeUp} className="relative w-full max-w-[90%] md:max-w-[85%] mx-auto rounded-xl overflow-hidden shadow-2xl">
             <div className="aspect-[4/3] md:aspect-[21/9] bg-navy-800 relative">
               <img 
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
                 alt="Executive leadership team meeting" 
                 className="w-full h-full object-cover opacity-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent mix-blend-multiply" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/40 via-transparent to-transparent mix-blend-multiply" />
             </div>
             
             {/* Stat Card Overlap */}
-            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white/95 backdrop-blur-md rounded-2xl p-6 md:p-8 flex gap-8 md:gap-12 shadow-xl border border-white/20">
+            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white/95 backdrop-blur-md rounded-lg p-6 md:p-8 flex gap-8 md:gap-12 shadow-xl border border-white/20">
               <div>
-                <p className="font-serif text-3xl md:text-4xl text-navy-900 mb-1">180<span className="text-red-main text-2xl align-top">+</span></p>
-                <p className="text-[0.65rem] md:text-xs tracking-widest uppercase text-navy-900/50 font-semibold">Executive engagements</p>
+                <p className="font-serif text-3xl md:text-4xl text-navy-900 mb-1">15<span className="text-red-main text-2xl align-top">+</span></p>
+                <p className="text-[0.65rem] md:text-xs tracking-widest uppercase text-navy-900/50 font-semibold">Years of Experience</p>
               </div>
               <div className="w-px bg-navy-900/10 hidden md:block"></div>
               <div>
-                <p className="font-serif text-3xl md:text-4xl text-navy-900 mb-1">96<span className="text-red-main text-2xl align-top">%</span></p>
-                <p className="text-[0.65rem] md:text-xs tracking-widest uppercase text-navy-900/50 font-semibold">Client satisfaction</p>
+                <p className="font-serif text-3xl md:text-4xl text-navy-900 mb-1">500<span className="text-red-main text-2xl align-top">+</span></p>
+                <p className="text-[0.65rem] md:text-xs tracking-widest uppercase text-navy-900/50 font-semibold">Individuals Advised</p>
               </div>
             </div>
-          </div>
+          </motion.div>
           
-        </div>
+        </motion.div>
       </section>
 
       {/* 01.5: TRUSTED BY LOGOS */}
@@ -161,74 +207,77 @@ export default function Home() {
       </section>
 
       {/* 04: APPROACH */}
-      <section className="bg-ivory-light text-navy-900 py-32">
+      <section className="bg-ivory text-navy-900 py-32 border-b border-navy-900/10">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mb-20">
-            <h2 className="text-sm font-semibold tracking-[0.2em] uppercase text-red-main mb-6">Our Methodology</h2>
-            <p className="font-serif text-4xl md:text-5xl leading-tight">Clarity creates direction. Direction creates possibility.</p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div className="flex flex-col">
+              <h2 className="text-sm font-semibold tracking-[0.2em] uppercase text-navy-900/60 mb-4">Our Methodology</h2>
+              <p className="font-serif text-4xl md:text-5xl leading-tight mb-12 text-navy-900">
+                Clarity creates direction.<br />
+                <span className="italic text-navy-800">Direction creates possibility.</span>
+              </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { num: "01", title: "Understand.", desc: "We begin by diagnosing the reality of where you or your organization stands today, stripping away assumptions." },
-              { num: "02", title: "Reframe.", desc: "We shift the perspective, identifying the underlying challenges and illuminating the strategic opportunities." },
-              { num: "03", title: "Move.", desc: "We implement a clear, decisive action plan to transition from the current state to the desired possibility." }
-            ].map((step) => (
-              <div key={step.num} className="group cursor-default relative">
-                <div className="text-6xl font-serif text-navy-900/5 mb-6 group-hover:text-red-main/10 transition-colors duration-500">{step.num}</div>
-                <div className="w-full h-px bg-navy-900/10 mb-8 relative overflow-hidden">
-                  <div className="absolute top-0 left-0 h-full w-0 bg-red-main group-hover:w-full transition-all duration-700 ease-out"></div>
+              <div className="flex flex-col space-y-3">
+                {methodologySteps.map((step, idx) => {
+                  const isActive = activeMethodology === idx;
+                  return (
+                    <div 
+                      key={step.num}
+                      onClick={() => setActiveMethodology(idx)}
+                      className={`cursor-pointer overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        isActive 
+                          ? "bg-[#333333] text-white rounded-[2rem] p-8 shadow-2xl scale-[1.02]" 
+                          : "bg-transparent text-navy-900 py-6 border-b border-navy-900/10 hover:border-navy-900/30 scale-100"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <h3 className={`font-sans text-xl md:text-2xl font-normal tracking-tight ${isActive ? "" : "text-navy-900/90"}`}>
+                          {step.title}
+                        </h3>
+                        <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? "bg-white text-[#333333]" : "border border-navy-900/20 text-navy-900 group-hover:border-navy-900/50"}`}>
+                          <ArrowRight className="w-5 h-5" />
+                        </div>
+                      </div>
+                      
+                      <div 
+                        className={`transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                          isActive ? "max-h-48 mt-4 opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <p className="text-white/70 text-lg leading-relaxed font-light">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="relative w-full aspect-square lg:aspect-[4/5] rounded-[2.5rem] overflow-hidden bg-navy-900 shadow-2xl lg:ml-8">
+              {methodologySteps.map((step, idx) => (
+                <div 
+                  key={step.num}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    activeMethodology === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+                >
+                  <img 
+                    src={step.image} 
+                    alt={step.title} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/20 via-transparent to-transparent" />
                 </div>
-                <h3 className="text-2xl font-serif mb-4">{step.title}</h3>
-                <p className="text-navy-900/70 leading-relaxed font-light">{step.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* 05: HUMAN STORY */}
-      <section className="bg-navy-900 text-ivory py-32 overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div className="relative aspect-[3/4] w-full max-w-lg mx-auto lg:mx-0">
-               <div className="absolute inset-0 bg-red-main transform -translate-x-4 -translate-y-4 opacity-20" />
-               <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                  alt="Founder portrait" 
-                  className="relative w-full h-full object-cover object-center z-10 filter contrast-125 brightness-90"
-               />
-               {/* Decorative typography in background */}
-               <div className="absolute -right-24 top-1/4 font-serif text-9xl text-white/5 rotate-90 select-none hidden lg:block whitespace-nowrap">
-                 The Pivot
-               </div>
-            </div>
-
-            <div>
-              <h2 className="font-serif text-5xl md:text-6xl mb-10 leading-tight">
-                Experience. <br />
-                <span className="italic text-white/60">Perspective.</span> <br />
-                Purpose.
-              </h2>
-              <div className="space-y-6 text-lg text-white/70 font-light mb-12">
-                <p>
-                  What started as an advisory practice strictly for high-performance athletes has evolved. 
-                  The pressures of performance, transition, and leadership are not confined to the stadium.
-                </p>
-                <p>
-                  Today, Pivot Business Solutions brings that elite performance framework to business leaders, 
-                  young professionals, and organizations—helping them navigate the pivotal moments that define their future.
-                </p>
-              </div>
-              <Link href="/about">
-                <Button variant="outline" size="lg" withArrow>Read My Story</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 06: WHO WE SERVE */}
+      {/* 05: WHO WE SERVE */}
       <section className="bg-ivory text-navy-900 py-32 border-b border-navy-900/10">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-24">
@@ -241,7 +290,7 @@ export default function Home() {
               { 
                 title: "I'm an Athlete", 
                 desc: "Career, performance, transition, management, and what's next.", 
-                img: "https://images.unsplash.com/photo-1526566762798-8fac9c07aa22?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               },
               { 
                 title: "I'm a Young Professional", 
@@ -254,7 +303,7 @@ export default function Home() {
                 img: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
               }
             ].map((path, idx) => (
-              <Link key={idx} href="/who-we-serve" className="group block relative overflow-hidden h-[500px]">
+              <Link key={idx} href="/who-we-serve" className="group block relative overflow-hidden h-[500px] rounded-lg">
                 <img 
                   src={path.img} 
                   alt={path.title} 
@@ -278,43 +327,84 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 07: TESTIMONIALS */}
-      <section className="bg-ivory-light py-32 text-navy-900">
+      {/* 06: TESTIMONIALS */}
+      <section className="bg-white py-32 text-navy-900 border-b border-navy-900/10">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="text-red-main font-serif text-8xl leading-none opacity-20 block mb-8">"</span>
-            <h2 className="font-serif text-3xl md:text-5xl leading-tight mb-12">
-              "Their strategic insight and hands-on approach helped us streamline operations and unlock new growth. They provided clarity where we had confusion."
-            </h2>
-            <div className="flex flex-col items-center justify-center gap-4">
-              <div className="w-16 h-16 rounded-full overflow-hidden bg-navy-900/10 mb-2">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Client" className="w-full h-full object-cover grayscale" />
-              </div>
-              <div>
-                <p className="font-bold tracking-wide uppercase text-sm mb-1">David Chen</p>
-                <p className="text-navy-900/50 text-xs uppercase tracking-widest">Founder, Keatec Ventures</p>
-              </div>
-            </div>
+          
+          <div className="text-center mb-20">
+            <h2 className="text-sm font-semibold tracking-[0.2em] uppercase text-navy-900/60 mb-4">Testimonials</h2>
+            <h3 className="font-serif text-4xl md:text-5xl leading-tight">
+              What <span className="italic text-navy-800">Our Clients</span> Are Saying
+            </h3>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                quote: "The transition from professional sports to the business world felt daunting. This advisory process gave me the exact framework I needed to translate my athletic discipline into corporate leadership. I now have total clarity on my next chapter.",
+                name: "Marcus T.",
+                role: "Former Pro Athlete",
+                img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              },
+              {
+                quote: "I was stuck in mid-management, unsure how to articulate my value. Through our sessions, we stripped away the noise and rebuilt my professional narrative. Within three months, I secured a senior leadership role.",
+                name: "Sarah J.",
+                role: "Young Professional",
+                img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              },
+              {
+                quote: "Their strategic insight and hands-on approach helped us streamline operations and unlock new growth. They provided clarity where we had confusion, completely reframing how our executive team approaches challenges.",
+                name: "David Chen",
+                role: "Business Owner",
+                img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+              }
+            ].map((testimonial, idx) => (
+              <div key={idx} className="bg-[#FAFAFA] rounded-xl p-8 md:p-10 flex flex-col h-full relative group hover:shadow-lg transition-shadow duration-300 border border-navy-900/5">
+                
+                {/* Quote Icon */}
+                <div className="absolute top-8 right-8 text-navy-900/10">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.017 21L16.41 14.382H10.428V3H21.572V14.382L19.179 21H14.017ZM3.839 21L6.232 14.382H0.25V3H11.394V14.382L9.001 21H3.839Z" />
+                  </svg>
+                </div>
+                
+                {/* Link/Chain Icon */}
+                <div className="text-navy-900/40 mb-8">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                  </svg>
+                </div>
+
+                <p className="text-navy-900/80 leading-relaxed mb-10 flex-grow font-light">
+                  "{testimonial.quote}"
+                </p>
+
+                <div className="pt-6 border-t border-navy-900/10 flex items-center gap-4 mt-auto">
+                  <div className="w-12 h-12 rounded-full overflow-hidden bg-navy-900/10 shrink-0">
+                    <img src={testimonial.img} alt={testimonial.name} className="w-full h-full object-cover grayscale" />
+                  </div>
+                  <div>
+                    <p className="font-bold tracking-wide text-sm text-navy-900">{testimonial.name}</p>
+                    <p className="text-navy-900/50 text-xs uppercase tracking-widest mt-0.5">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center items-center gap-4 mt-16">
+            <button className="w-12 h-12 rounded-full border border-navy-900/20 flex items-center justify-center text-navy-900 hover:bg-navy-900 hover:text-white transition-colors" aria-label="Previous testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button className="w-12 h-12 rounded-full bg-navy-900 text-white flex items-center justify-center hover:bg-navy-800 transition-colors" aria-label="Next testimonial">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+
         </div>
       </section>
 
-      {/* 08: FINAL CTA */}
-      <section className="relative py-40 bg-navy-900 text-center overflow-hidden">
-        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center bg-no-repeat mix-blend-luminosity"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/80 to-navy-900/40"></div>
-        
-        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
-          <h2 className="font-serif text-5xl md:text-7xl text-white mb-6">
-            What's possible <br />
-            <span className="italic text-white/70">from here?</span>
-          </h2>
-          <p className="text-xl text-white/60 mb-12 font-light">Let's start your pivot.</p>
-          <Link href="/contact">
-            <Button size="lg" withArrow>Start Your Pivot</Button>
-          </Link>
-        </div>
-      </section>
     </>
   );
 }
