@@ -30,6 +30,9 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  const isHome = pathname === "/";
+  const isLightText = isScrolled || !isHome;
+
   return (
     <>
       <motion.header
@@ -42,9 +45,15 @@ export function Navbar() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
-          <Link href="/" className="relative z-50 group flex flex-col leading-none text-white hover:text-ivory transition-colors">
+          <Link href="/" className={cn(
+            "relative z-50 group flex flex-col leading-none transition-colors",
+            isLightText ? "text-white hover:text-ivory" : "text-navy-900 hover:text-navy-800"
+          )}>
             <span className="font-serif text-2xl tracking-wide">PIVOT</span>
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-white/70 group-hover:text-white transition-colors">Business Solutions</span>
+            <span className={cn(
+              "font-sans text-[0.6rem] uppercase tracking-[0.2em] transition-colors",
+              isLightText ? "text-white/70 group-hover:text-white" : "text-navy-900/70 group-hover:text-navy-900"
+            )}>Business Solutions</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -58,7 +67,10 @@ export function Navbar() {
                       href={link.href}
                       className={cn(
                         "text-xs uppercase tracking-widest transition-colors hover:text-red-main relative py-2",
-                        isActive ? "text-white" : "text-white/70"
+                        isActive && isLightText ? "text-white" : "",
+                        isActive && !isLightText ? "text-navy-900" : "",
+                        !isActive && isLightText ? "text-white/70" : "",
+                        !isActive && !isLightText ? "text-navy-900/70" : ""
                       )}
                     >
                       {link.name}
@@ -75,7 +87,7 @@ export function Navbar() {
               })}
             </ul>
             <Link href="/contact">
-              <Button withArrow size="sm" variant={isScrolled ? "primary" : "outline"}>
+              <Button withArrow size="sm" variant={isLightText ? (isScrolled ? "primary" : "outline") : "outline-dark"}>
                 Start Your Pivot
               </Button>
             </Link>
@@ -83,7 +95,10 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden relative z-50 text-white p-2"
+            className={cn(
+              "md:hidden relative z-50 p-2",
+              isLightText ? "text-white" : "text-navy-900"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >

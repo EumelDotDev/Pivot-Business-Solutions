@@ -6,49 +6,79 @@ export default function Home() {
   return (
     <>
       {/* 01: HERO */}
-      <section className="relative min-h-[90vh] flex items-center bg-navy-900 pt-32 pb-20 overflow-hidden">
-        {/* Subtle background abstract element */}
-        <div className="absolute top-0 right-0 w-2/3 h-full opacity-20 mix-blend-screen pointer-events-none">
-          <div className="w-full h-full bg-gradient-to-br from-navy-800 via-transparent to-transparent" />
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="flex items-center gap-4 mb-8 text-white/50 text-xs tracking-[0.2em] uppercase font-semibold">
-              <span className="w-8 h-px bg-white/20"></span>
-              <span>01 / 05</span>
+      <section className="relative pt-40 pb-20 bg-ivory text-navy-900">
+        <div className="container mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
+          
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-navy-900/10 mb-8 bg-white/50 backdrop-blur-sm shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-main"></span>
+            <span className="text-[0.65rem] font-bold tracking-widest uppercase text-navy-900/70">Counseling & Consulting</span>
+          </div>
+          
+          <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] tracking-tight text-navy-900 mb-6 max-w-5xl">
+            Pivot to <br className="hidden md:block" />
+            <span className="italic">Possibility.</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-navy-900/60 max-w-2xl mb-12 font-light leading-relaxed">
+            Professional counseling and strategic management advisory for athletes, young professionals, and businesses navigating growth and transition.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 mb-20 z-10">
+            <Link href="/contact">
+              <Button size="lg" variant="secondary" withArrow>
+                Book a Strategy Session
+              </Button>
+            </Link>
+            <Link href="/about">
+              <Button size="lg" variant="outline-dark" withArrow>
+                Learn More
+              </Button>
+            </Link>
+          </div>
+
+          <div className="relative w-full max-w-6xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl">
+            <div className="aspect-[4/3] md:aspect-[21/9] bg-navy-800 relative">
+              <img 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+                alt="Executive leadership team meeting" 
+                className="w-full h-full object-cover opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent mix-blend-multiply" />
             </div>
             
-            <h1 className="font-serif text-6xl md:text-7xl lg:text-8xl leading-[1.1] tracking-tight text-white mb-8">
-              Pivot to <br />
-              <span className="text-red-main italic pr-4">Possibility.</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-white/70 max-w-lg mb-12 font-light leading-relaxed">
-              We help people, athletes, and organizations navigate change, growth, and what&apos;s next with clarity, strategy, and confidence.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6">
-              <Link href="/contact">
-                <Button size="lg" withArrow>Start Your Pivot</Button>
-              </Link>
-              <Link href="/about">
-                <Button size="lg" variant="ghost" withArrow>Learn More</Button>
-              </Link>
+            {/* Stat Card Overlap */}
+            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white/95 backdrop-blur-md rounded-2xl p-6 md:p-8 flex gap-8 md:gap-12 shadow-xl border border-white/20">
+              <div>
+                <p className="font-serif text-3xl md:text-4xl text-navy-900 mb-1">180<span className="text-red-main text-2xl align-top">+</span></p>
+                <p className="text-[0.65rem] md:text-xs tracking-widest uppercase text-navy-900/50 font-semibold">Executive engagements</p>
+              </div>
+              <div className="w-px bg-navy-900/10 hidden md:block"></div>
+              <div>
+                <p className="font-serif text-3xl md:text-4xl text-navy-900 mb-1">96<span className="text-red-main text-2xl align-top">%</span></p>
+                <p className="text-[0.65rem] md:text-xs tracking-widest uppercase text-navy-900/50 font-semibold">Client satisfaction</p>
+              </div>
             </div>
           </div>
           
-          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none lg:ml-auto">
-            <div className="absolute inset-0 bg-navy-800 transform translate-x-4 translate-y-4 border border-white/10" />
-            <div className="relative w-full h-full bg-white/5 overflow-hidden group">
-              <img 
-                src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                alt="Executive leadership and performance" 
-                className="w-full h-full object-cover object-center grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent" />
+        </div>
+      </section>
+
+      {/* 01.5: TRUSTED BY LOGOS */}
+      <section className="bg-ivory py-16 border-b border-navy-900/10 overflow-hidden">
+        <div className="container mx-auto px-6 mb-12 text-center">
+          <p className="text-[0.65rem] uppercase tracking-[0.2em] font-bold text-navy-900/40">Trusted by leadership teams & high-performers globally</p>
+        </div>
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex gap-24 px-12 items-center opacity-40 grayscale mix-blend-multiply">
+              <span className="font-serif text-2xl font-bold text-navy-900">AlphaCorp</span>
+              <span className="font-sans text-xl font-bold tracking-tighter text-navy-900">GLOBEX</span>
+              <span className="font-serif italic text-2xl text-navy-900">Stark Industries</span>
+              <span className="font-sans text-2xl font-black tracking-widest uppercase text-navy-900">Soylent</span>
+              <span className="font-serif text-3xl font-light text-navy-900">Wayne Ent.</span>
+              <span className="font-sans text-xl font-bold uppercase text-navy-900">Massive Dynamic</span>
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
