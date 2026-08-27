@@ -44,8 +44,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             "flex items-center justify-center rounded-full transition-transform group-hover:scale-105",
             {
               "bg-white text-red-main": variant === "primary",
-              "bg-white text-navy-900": variant === "secondary",
-              "bg-white text-navy-900": variant === "outline",
+              "bg-white text-navy-900": variant === "secondary" || variant === "outline",
               "bg-navy-900 text-white": variant === "outline-dark",
               "bg-white/20 text-white": variant === "ghost",
               "w-9 h-9": size === "default",
