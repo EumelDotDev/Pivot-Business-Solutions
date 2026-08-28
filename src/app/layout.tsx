@@ -24,9 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full antialiased bg-navy-900 text-ivory selection:bg-red-main selection:text-white`}
+      className={`${playfair.variable} ${inter.variable} antialiased bg-navy-900 text-ivory selection:bg-red-main selection:text-white`}
     >
-      <body className="min-h-full flex flex-col font-sans">
+      <body className="flex flex-col min-h-screen font-sans">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

@@ -21,7 +21,7 @@ import { usePathname } from "next/navigation";
 
 export function Footer() {
   const pathname = usePathname();
-  const showCTA = pathname !== "/about";
+  const showCTA = pathname !== "/about" && pathname !== "/contact" && pathname !== "/services" && pathname !== "/who-we-serve";
 
   return (
     <>

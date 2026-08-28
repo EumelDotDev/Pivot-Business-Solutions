@@ -30,83 +30,73 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
-  const darkHeroPages = ["/about", "/services", "/contact"];
-  const hasDarkHero = darkHeroPages.includes(pathname);
-  const isLightText = isScrolled || (!isScrolled && hasDarkHero);
+
 
   return (
     <>
-      <motion.header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-500",
-          isScrolled ? "bg-navy-900/95 backdrop-blur-md border-b border-white/5 py-4" : "bg-transparent py-6"
-        )}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="container mx-auto px-6 lg:px-12 flex items-center justify-between">
-          <Link href="/" className={cn(
-            "relative z-50 group flex flex-col leading-none transition-colors",
-            isLightText ? "text-white hover:text-ivory" : "text-navy-900 hover:text-navy-800"
-          )}>
-            <span className="font-serif text-2xl tracking-wide">PIVOT</span>
-            <span className={cn(
-              "font-sans text-[0.6rem] uppercase tracking-[0.2em] transition-colors",
-              isLightText ? "text-white/70 group-hover:text-white" : "text-navy-900/70 group-hover:text-navy-900"
-            )}>Business Solutions</span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            <ul className="flex items-center gap-8">
-              {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "text-xs uppercase tracking-widest transition-colors hover:text-red-main relative py-2",
-                        isActive && isLightText ? "text-white" : "",
-                        isActive && !isLightText ? "text-navy-900" : "",
-                        !isActive && isLightText ? "text-white/70" : "",
-                        !isActive && !isLightText ? "text-navy-900/70" : ""
-                      )}
-                    >
-                      {link.name}
-                      {isActive && (
-                        <motion.div
-                          layoutId="nav-indicator"
-                          className="absolute bottom-0 left-0 right-0 h-px bg-red-main"
-                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        />
-                      )}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-            <Link href="/contact">
-              <Button withArrow size="sm" variant={isLightText ? (isScrolled ? "primary" : "outline") : "outline-dark"}>
-                Start Your Pivot
-              </Button>
+      <div className="fixed top-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:w-[90%] md:max-w-7xl z-50">
+        <motion.header
+          className={cn(
+            "transition-all duration-500 rounded-full border border-white/10 shadow-2xl",
+            isScrolled ? "bg-navy-900/80 backdrop-blur-md py-3" : "bg-navy-900/40 backdrop-blur-md py-4"
+          )}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="px-6 lg:px-10 flex items-center justify-between">
+            <Link href="/" className="relative z-50 group flex flex-col leading-none transition-colors text-white hover:text-ivory">
+              <span className="font-serif text-2xl tracking-wide">PIVOT</span>
+              <span className="font-sans text-[0.6rem] uppercase tracking-[0.2em] transition-colors text-white/70 group-hover:text-white">
+                Business Solutions
+              </span>
             </Link>
-          </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className={cn(
-              "md:hidden relative z-50 p-2",
-              isLightText ? "text-white" : "text-navy-900"
-            )}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </motion.header>
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-8">
+              <ul className="flex items-center gap-8">
+                {NAV_LINKS.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "text-xs uppercase tracking-widest transition-colors hover:text-red-main relative py-2",
+                          isActive ? "text-white font-semibold" : "text-white/70 hover:text-white"
+                        )}
+                      >
+                        {link.name}
+                        {isActive && (
+                          <motion.div
+                            layoutId="nav-indicator"
+                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-red-main"
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          />
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <Link href="/contact">
+                <Button withArrow size="sm" variant="primary" className="bg-white/10 hover:bg-white/20 border-0 text-white backdrop-blur-sm">
+                  Start Your Pivot
+                </Button>
+              </Link>
+            </nav>
+
+            {/* Mobile Menu Toggle */}
+            <button
+              className="md:hidden relative z-50 p-2 text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </motion.header>
+      </div>
 
       {/* Mobile Nav Overlay */}
       {isMobileMenuOpen && (
