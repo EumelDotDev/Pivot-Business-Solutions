@@ -24,7 +24,7 @@ const Pathway = ({
   reverse?: boolean
 }) => (
   <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-stretch mb-32 ${reverse ? 'lg:flex-row-reverse' : ''}`}>
-    <div className={`relative w-full h-full min-h-[500px] bg-navy-900/5 ${reverse ? 'lg:order-2' : 'lg:order-1'}`}>
+    <div className={`relative w-full h-full min-h-[500px] bg-navy-900/5 rounded-[2.5rem] overflow-hidden ${reverse ? 'lg:order-2' : 'lg:order-1'}`}>
       <img 
         src={imageSrc} 
         alt={title}

@@ -47,7 +47,7 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="order-1 lg:order-2 relative aspect-square w-full bg-navy-900/5">
+            <div className="order-1 lg:order-2 relative aspect-square w-full bg-navy-900/5 rounded-[2.5rem] overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                 alt="Athletic performance"
@@ -57,7 +57,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="relative aspect-square w-full bg-navy-900/5">
+            <div className="relative aspect-square w-full bg-navy-900/5 rounded-[2.5rem] overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                 alt="Business leadership"
@@ -108,11 +108,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             <div className="lg:col-span-5 relative">
               <div className="sticky top-32">
-                <div className="absolute inset-0 bg-navy-900 transform translate-x-4 translate-y-4" />
+                <div className="absolute inset-0 bg-navy-900 transform translate-x-4 translate-y-4 rounded-[2.5rem]" />
                 <img 
                   src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
                   alt="Founder of Pivot Business Solutions"
-                  className="relative w-full aspect-[3/4] object-cover grayscale"
+                  className="relative w-full aspect-[3/4] object-cover grayscale rounded-[2.5rem]"
                 />
               </div>
             </div>
@@ -147,17 +147,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CLOSING / CTA */}
-      <section className="bg-ivory py-40 text-center">
-        <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
-          <h2 className="font-serif text-5xl md:text-6xl text-navy-900 mb-12">
-            Ready to define <span className="italic">what&apos;s next?</span>
-          </h2>
-          <Link href="/contact">
-            <Button size="lg" withArrow>Start Your Pivot</Button>
-          </Link>
-        </div>
-      </section>
     </>
   );
 }
